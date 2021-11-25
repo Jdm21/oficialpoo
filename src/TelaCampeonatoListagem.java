@@ -67,13 +67,33 @@ public class TelaCampeonatoListagem extends JFrame {
 		tblFisic.getColumnModel().getColumn(6).setPreferredWidth(76);
 		scrFisic.setViewportView(tblFisic);
 		
+		
+		
 		JButton btnExcluir = new JButton("Excluir Fisiculturista");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int id = (int) tblFisic.getModel().getValueAt(tblFisic.getSelectedRow(), 0);
-				//JOptionPane.showMessageDialog(btnExcluir, "Deseja Excluir?");
+				int i = JOptionPane.showConfirmDialog(
+				        null, 
+				        "Deseja continuar?"
+				        );
+				if(i == JOptionPane.YES_OPTION) {
+				   
+				    campRepo.excluir(id);
+				}
+				else if(i == JOptionPane.NO_OPTION) {
+				   
+				  
+				    listarCamp();
+				    
+				}
+				else if(i == JOptionPane.CANCEL_OPTION) {
+				    
+				    dispose();
+				    
+				}
 				
-				campRepo.excluir(id);
+				//campRepo.excluir(id);
 				listarCamp();
 				
 				

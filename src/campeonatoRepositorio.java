@@ -1,6 +1,8 @@
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class campeonatoRepositorio {
 	private BD bd;
 	public campeonatoRepositorio(BD bd) {
@@ -83,6 +85,8 @@ public class campeonatoRepositorio {
 							+ "Nacionalidade = '" + campeonato.getNacionalidade() + "' "
 							+ "WHERE id = " + campeonato.getId() + ";";
 		this.bd.executeQuery(query);
+		
+		
 		
 	}
 }

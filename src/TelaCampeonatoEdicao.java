@@ -101,6 +101,7 @@ public class TelaCampeonatoEdicao extends JFrame {
 		contentPane.add(btnLimpar);
 		
 		JButton btnEditar = new JButton("Editar");
+		 		
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
                 campeonato.setNome(txtNome.getText());
@@ -109,10 +110,52 @@ public class TelaCampeonatoEdicao extends JFrame {
                 campeonato.setFederacao(txtFederacao.getText());
                 campeonato.setPeso(txtPeso.getText());
                 campeonato.setNacionalidade(txtNacionalidade.getText());
+                if(campeonato.getNome().equals("")) {
+        			JOptionPane.showMessageDialog(null, "O campo Nome é obrigatorio!");
+        			return;
+        		}
+        		if(campeonato.getCategoria().equals("")) {
+        			JOptionPane.showMessageDialog(null, "O campo Categoria é obrigatorio!");
+        			return;
+        		}
+        		if(campeonato.getIdade().equals("")) {
+        			JOptionPane.showMessageDialog(null, "O campo Idade é obrigatorio!");
+        			return;
+        		}
+        		if(campeonato.getFederacao().equals("")) {
+        			JOptionPane.showMessageDialog(null, "O campo Federacao é obrigatorio!");
+        			return;
+        		}
+        		if(campeonato.getPeso().equals("")) {
+        			JOptionPane.showMessageDialog(null, "O campo Peso é obrigatorio!");
+        			return;
+        		}
+        		if(campeonato.getNacionalidade().equals("")) {
+        			JOptionPane.showMessageDialog(null, "O campo Nacionalidade é obrigatorio!");
+        			return;
+        		}
+        		
+                int i = JOptionPane.showConfirmDialog(
+                        null, 
+                        "Deseja continuar?"
+                        );
+                if(i == JOptionPane.YES_OPTION) {
+                    
+                    campRepo.editar(campeonato); 
+                    JOptionPane.showMessageDialog(btnEditar, "Fisiculturista Editado com Sucesso");
+                    dispose();
+                }
+                else if(i == JOptionPane.NO_OPTION) {
+                    
+                    dispose();
+                }
+                else if(i == JOptionPane.CANCEL_OPTION) {
+                    
+                }
                 
-                campRepo.editar(campeonato); 
-				JOptionPane.showMessageDialog(btnEditar, "Fisiculturista Editado com Sucesso");
-				dispose();
+                //campRepo.editar(campeonato); 
+				//JOptionPane.showMessageDialog(btnEditar, "Fisiculturista Editado com Sucesso");
+				//dispose();
 				
 				
 				
